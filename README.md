@@ -4,6 +4,14 @@ A runnable engineering portfolio exploring how to turn responsible AI principles
 
 The examples use synthetic data and run locally without API credentials. This repository is an educational lab, not a production governance platform or a compliance certification.
 
+## Interactive portal
+
+Run `python app.py` and open http://127.0.0.1:8765/ to register synthetic AI assets and explore evaluation gates, human review, simulated releases, runtime controls and audit exports. The portal includes a guided user manual and the original illustrated manual. See [portal setup and scope](portal/README.md).
+
+An [owner-private hosted portal](https://governance-lab-asset-portal.indigoanole8.chatgpt.site) is also available to the Site owner. Other visitors can clone and run the local version.
+
+Portal evaluations are illustrative fixtures, and browser data stays local. The Python commands below run actual ML and retrieval evaluations.
+
 ## What you can explore
 
 | Area | Implementation | Evidence |
@@ -32,7 +40,7 @@ These commands work in PowerShell and POSIX shells. The lockfile pins dependenci
 
 For a smaller install, omit `--extra eval` and run tests with `-k "not eval_integrations_import"`. The default assistant extracts text from a tiny local corpus; it does not call an LLM. The shipping question returns `Standard shipping takes 5 business days.`
 
-This is a command-line lab. No web server or dashboard is required.
+These commands run the Python lab independently of the optional interactive portal.
 
 ## Inspect the outputs
 
