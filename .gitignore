@@ -1,0 +1,15 @@
+.venv/
+.uv-cache/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.deepeval/
+.env
+.env.*
+!.env.example
+artifacts/
+*.db
+*.sqlite*
+*.log
+test-output.txt
