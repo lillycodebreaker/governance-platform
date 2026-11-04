@@ -1,0 +1,185 @@
+Meeting Summary — AI Governance Registry: AI Assist Agent & Knowledge Base
+
+Meeting focus: Define the scope, architecture, knowledge sources, and implementation approach for enhancing the AI Assist Agent in the new AI Governance Registry.
+
+1. Key Discussion Notes
+
+A. FAQ and Knowledge Base — Initial Priority
+
+* An existing SharePoint user guide contains definitions, instructions, and examples for many AI Registry fields.
+* The guide was created for the previous registry and needs updating to reflect the new platform.
+* Tooltips: Use for short definitions and simple explanations.
+* AI Assist Agent: Handle more complex questions, detailed explanations, examples, and guidance for completing registration fields.
+* The existing documentation provides a starting point for the FAQ implementation.
+
+B. Two Separate AI Agents
+
+The platform will maintain two distinct agent experiences.
+
+Agent	Purpose	Access
+Customer-facing agent	Registration assistance, FAQs, field explanations, and future input validation	General users
+Reviewer-facing agent	Inventory queries, governance reviews, compliance support, and record analysis	Authorized roles
+
+Additional points:
+
+* Reviewer capabilities will be restricted using role-based access control (RBAC).
+* Future access may include Risk, Compliance, Security, and other authorized teams, with different permissions.
+* The agents should remain modular rather than combining all capabilities into one large agent.
+* The AI Governance agents will remain independent of the Data Portal’s Sara orchestration agent for now.
+
+C. Registration Input Validation
+
+Problem: Users are submitting incomplete or insufficient information, including entering “N/A” in required fields. Reviewers must follow up manually, causing delays.
+
+Proposed enhancement: AI-assisted validation to identify inadequate responses and guide users toward acceptable submissions.
+
+Two implementation options were discussed:
+
+* Validate after a user finishes entering an individual field.
+* Validate all responses at form submission.
+
+The team emphasized balancing user experience, AI invocation costs, and technical performance.
+
+No final decision was made on when validation should occur.
+
+D. Knowledge Management and Maintenance
+
+* The existing documentation is not a suitable long-term source of truth without updates.
+* AI Governance owns the knowledge content, with Marty identified as the primary content owner.
+* The group supported maintaining user guidance directly within the AI Governance platform, where authorized owners could edit it.
+* The agent should use updated content without requiring duplicate manual updates.
+* A technical mechanism for document synchronization and update detection still needs to be designed.
+
+E. Future Agent Capabilities
+
+Potential enhancements discussed include:
+
+* Answering questions about registration status.
+* Providing examples for completing free-text fields.
+* Querying registry records and BigQuery data.
+* Supporting links to relevant reference documents.
+* Collecting user feedback on unsuccessful answers.
+* Expanding knowledge sources beyond the original user guide.
+* Introducing orchestration across specialized agents if future requirements justify it.
+
+These are future considerations, not all committed requirements.
+
+2. Decisions and Agreements
+
+#	Decision / Direction	Status
+1	Start implementation with FAQ and knowledge-based assistance	
+2	Reuse the existing registry guide as the initial content source	
+3	Use tooltips for simple definitions and AI Assist for detailed explanations	
+4	Keep customer-facing and reviewer-facing agents separate	
+5	Restrict reviewer agents and their endpoints through role-based permissions	
+6	Explore maintaining documentation directly within the platform	
+7	Design modular, extensible architecture supporting future tool calling	
+8	Evaluate field-level versus submission-time validation before selecting an approach	
+
+3. Action Items and Ownership
+
+Action tracker
+
+0 of 10 completed
+
+Copy actions
+
+Review the existing user guide and identify FAQ content, gaps, and outdated fields.
+
+Vincent
+
+· High priority
+
+Propose FAQ agent technical architecture, including knowledge storage, updates, and tool-calling extensibility.
+
+Vincent
+
+· High priority
+
+Evaluate registration validation options and recommend trigger timing based on UX, performance, and cost.
+
+Vincent
+
+· High priority
+
+Prepare proposed UX and technical design for team review; then break approved scope into implementation stories and phases.
+
+Vincent
+
+· High priority
+
+Review and update knowledge content for the new registry; maintain approved definitions and guidance.
+
+Marty / AI Governance
+
+· High priority
+
+Compile frequently asked user questions, suggested answers, and registration examples.
+
+Marty + Sandy / Governance
+
+· High priority
+
+Define acceptable free-text responses, minimum field requirements, and validation criteria.
+
+Engineering + Governance
+
+· High priority
+
+Confirm documentation source of truth, ownership, editing permissions, and agent synchronization.
+
+Engineering + Governance
+
+· Medium priority
+
+Define future partner roles and permissions for reviewer-agent capabilities.
+
+Engineering + Security / Governance
+
+· Medium priority
+
+Review technical proposals and finalize scope, approach, and phased delivery priorities.
+
+Project team
+
+· High priority
+
+Owners are based on the transcript; team assignments not explicitly confirmed are proposed. No firm due dates were established.
+
+4. Open Questions Requiring Follow-up
+
+Area	Questions to resolve
+Knowledge sources	Only approved governance documentation, or other CVS documents as well?
+Source of truth	Will updated guidance live inside the registry? How will updates reach the agent?
+Validation	Field-level, submission-time, or a hybrid approach? What constitutes an acceptable answer?
+Agent reliability	What should happen when the agent cannot answer confidently?
+References	Should answers include citations and links to supporting documents?
+Feedback	How can users flag inaccurate or unhelpful answers?
+Role-based access	What permissions should governance reviewers, Risk, Compliance, and Security receive?
+Future functionality	When should submission-status queries and BigQuery integrations be introduced?
+
+5. Suggested Implementation Phases
+
+Phase 1 — FAQ Agent Foundation
+
+Existing guide review, knowledge-base setup, question answering, detailed field explanations, and frequently asked questions.
+
+Phase 2 — Intelligent Registration Assistance
+
+Free-text validation, response quality checks, examples, contextual guidance, feedback collection, and registration-status support.
+
+Phase 3 — Scalable Agent Architecture
+
+Extended tool calling, BigQuery integration, granular reviewer permissions, additional knowledge sources, and potential agent orchestration.
+
+This is a recommended sequencing based on the discussion, not a formally approved release schedule.
+
+6. Key Takeaways for Leadership
+
+The team aligned on starting with a knowledge-based FAQ agent to improve the AI Registry registration experience, while preserving separate, role-restricted reviewer capabilities.
+
+The immediate priorities are to reuse existing documentation, establish maintainable knowledge ownership, and finalize the technical and UX design. Input validation was identified as an important next enhancement because incomplete submissions are creating manual reviewer effort.
+
+Leadership focus: Confirm the Phase 1 scope and ownership, obtain a technical design proposal from Vincent, and agree on the approach to knowledge maintenance and validation before converting the work into delivery stories.
+
+The architecture should support future expansion without requiring a redesign, but those future features should not delay the initial FAQ implementation.
